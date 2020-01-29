@@ -8,8 +8,8 @@ env:
   - GCE_CREDENTIALS_FILE="$(pwd)/credentials.json"
 script:
 - molecule create
-#- molecule converge
-#- molecule verify
+- molecule converge
+- molecule verify
 after_script:
 - molecule destroy
 before_install:
