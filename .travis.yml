@@ -2,22 +2,8 @@ language: python
 python:
 - '3.6'
 install:
-- pip install ansible molecule apache-libcloud
-env:
-  matrix:
-  - GCE_CREDENTIALS_FILE="$(pwd)/credentials.json"
+- pip install ansible==2.3.0 molecule apache-libcloud
 script:
-- molecule create
-- molecule converge
-- molecule verify
+- molecule --debug test
 after_script:
-- molecule destroy
-before_install:
-#- openssl aes-256-cbc -K $encrypted_a5a5042ef067_key -iv $encrypted_a5a5042ef067_iv -in secrets.tar.enc -out secrets.tar -d
-- tar xvf secrets.tar
-- mv google_compute_engine /home/travis/.ssh/
-- chmod 0600 /home/travis/.ssh/google_compute_engine
-notifications:
-  slack:
-    rooms:
-      secure: r2oO0wE85DqScVFZGEJxUgSsJa1ztpaRI7VIQMrOocj07gzlI3tCbBjkraq45EWe2mxGANMoarEu/K2r1hcKPVwTBcBNK9DQFeYejn7XkrB5JpnRXkY49WJdd1PIMVra+aIH1aGENy5pLVSrAhNsh8A+60yhUI9pHQ4/GfnEAcHecLZfLbO7EaSrRmDi77fvWLbqqn7f3SwClMNi91mjRaMOJD2mRCmaZylhXqM5vLGTAIna/MfiapQJyBcuaIJKbfphQBwOueTLy/8rwP1+mKg7CD06xXxKP0ixOqa2pXCkeooKHOooktZhXcWM6sVrhC87yI8nD2WZsM/kWxvUx9VNLg2w34NKb5qlaVi7hefiOIzS7Sv+amXwd2Oy9zKSBSUrM2D3NICHzdhFQvy8+OoAjZGnWvjG7ZUXrLANpZyGFpxqv3Tjv2GLIWqlV5i3BRVxP3hjCBsTRFwUXeKMQhWRR/0lVKAQDbFuP3Ub9kpVuDh57p7DKCtF7wQiUHQZIb5nWRDZNyQqmIx/IE9pIL4QpOpOiuAdaq3MQShVsTP2/fFSCmggMDe6Y247j0Y9hrau1QWj24MLb2U1jpT4zgbRSgJKcH8HdPOC/Sf/sJK6+PYqfZu3imB5pQFDofko8Ny4Gqn10SvWZtkwdKxOFaXlZMDUC5w9aow2z88iNoc=
+- molecule --debug destroy
