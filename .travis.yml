@@ -3,17 +3,17 @@ python:
 - '3.6'
 install:
 - pip install ansible>=2.4.0 molecule>=2.6 apache-libcloud testinfra>=1.10
-env:
-  matrix:
-  - GCE_CREDENTIALS_FILE="$(pwd)/credentials.json"
 script:
-- molecule create
-- molecule converge
-- molecule verify 
+ - pytest
+#- molecule create
+#- molecule converge
+#- molecule verify
 after_script:
-- molecule destroy
+  - pytest
+#- molecule destroy
 before_install:
+  - pytest
 #- openssl aes-256-cbc -K $encrypted_a5a5042ef067_key -iv $encrypted_a5a5042ef067_iv -in secrets.tar.enc -out secrets.tar -d
-- tar xvf secrets.tar
-- mv google_compute_engine /home/travis/.ssh/
-- chmod 0600 /home/travis/.ssh/google_compute_engine
+#- tar xvf secrets.tar
+#- mv google_compute_engine /home/travis/.ssh/
+#- chmod 0600 /home/travis/.ssh/google_compute_engine
