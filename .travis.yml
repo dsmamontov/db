@@ -4,9 +4,11 @@ python:
 install:
 - pip install ansible>=2.3.0 molecule apache-libcloud testinfra 'molecule[gce]'
 script:
-- molecule --debug test
+- molecule create
+- molecule converge
+- molecule verify
 after_script:
-- molecule --debug destroy
+- molecule destroy
 before_install:
 - openssl aes-256-cbc -K $encrypted_d308d923aabf_key -iv $encrypted_d308d923aabf_iv
   -in secrets.tar.enc -out secrets.tar -d
