@@ -5,11 +5,11 @@
 #    state: present
 #  tags: install
 
-#- name: copy mongo
-#  copy:
-#    src: mongodb-org-mongos_3.2.10_amd64.deb
-#    dest: /tmp/mongodb-org-mongos_3.2.10_amd64.deb
-#  tags: install
+- name: copy mongo
+  copy:
+    src: mongodb-org-mongos_3.2.10_amd64.deb
+    dest: /tmp/mongodb-org-mongos_3.2.10_amd64.deb
+  tags: install
 
 - name: Install mongodb package
   apt:
