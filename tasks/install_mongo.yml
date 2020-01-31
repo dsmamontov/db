@@ -1,19 +1,23 @@
-- name: Add APT key
-  apt_key:
-    id: "EA312927"
-    keyserver: keyserver.ubuntu.com
-  tags: install
+#- name: Add APT repository
+#  apt_repository:
+#    validate_certs: no
+#    repo: deb [ arch=amd64,arm64 ] http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2 multiverse
+#    state: present
+#  tags: install
 
-- name: Add APT repository
-  apt_repository:
-    repo: deb [ arch=amd64,arm64 ] http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2 multiverse
-    state: present
+- name: copy mongo
+  copy:
+    src: files/mongodb-org-mongos_3.2.10_amd64.deb
+    dest: /tmp/mongodb-org-mongos_3.2.10_amd64.deb
   tags: install
 
 - name: Install mongodb package
   apt:
-    name: mongodb-org
-    state: present
+    deb: /tmp/mongodb-org-mongos_3.2.10_amd64.deb
+#    name: mongodb-org
+#    state: present
+#    allow_unauthenticated: yes
+#    update_cache: yes
   tags: install
 
 - name: Configure service supervisor
