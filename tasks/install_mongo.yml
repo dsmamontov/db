@@ -7,7 +7,7 @@
 
 - name: copy mongo
   copy:
-    src: files/mongodb-org-mongos_3.2.10_amd64.deb
+    src: mongodb-org-mongos_3.2.10_amd64.deb
     dest: /tmp/mongodb-org-mongos_3.2.10_amd64.deb
   tags: install
 
