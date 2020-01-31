@@ -15,8 +15,6 @@
   apt:
     name: mongodb-org
     state: present
-    allow_unauthenticated: yes
-    update_cache: yes
   tags: install
 
 - name: Configure service supervisor
