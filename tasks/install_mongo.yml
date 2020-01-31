@@ -19,6 +19,7 @@
 #    allow_unauthenticated: yes
     update_cache: yes
   tags: install
+  ignore_errors: True
 
 - name: Configure service supervisor
   systemd:
