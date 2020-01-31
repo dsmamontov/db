@@ -11,15 +11,19 @@
     dest: /tmp/mongodb-org-mongos_3.2.10_amd64.deb
   tags: install
 
-- name: Install mongodb package 2
-  apt:
-    deb: /tmp/mongodb-org-mongos_3.2.10_amd64.deb
+- name: install mongo
+  shell: sudo apt install /tmp/mongodb-org-mongos_3.2.10_amd64.deb
+  tags: install
+
+#- name: Install mongodb package 2
+#  apt:
+#    deb: /tmp/mongodb-org-mongos_3.2.10_amd64.deb
 #    name: mongodb-org
 #    state: present
 #    allow_unauthenticated: yes
-    update_cache: yes
-  tags: install
-  ignore_errors: True
+#    update_cache: yes
+#  tags: install
+#  ignore_errors: True
 
 - name: Configure service supervisor
   systemd:
