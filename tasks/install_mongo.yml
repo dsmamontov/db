@@ -12,7 +12,7 @@
   tags: install
 
 - name: install mongo
-  shell: sudo apt install -y https://repo.mongodb.org/apt/ubuntu/dists/xenial/mongodb-org/3.2/multiverse/binary-amd64/mongodb-org-mongos_3.2.10_amd64.deb
+  shell: sudo apt-get install -y https://repo.mongodb.org/apt/ubuntu/dists/xenial/mongodb-org/3.2/multiverse/binary-amd64/mongodb-org-mongos_3.2.10_amd64.deb
   tags: install
 
 #- name: Install mongodb package 2
